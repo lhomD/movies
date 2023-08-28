@@ -1,0 +1,368 @@
+@import "config";
+@import "btn";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "Anek Latin", sans-serif;
+}
+
+//Header, footer and main section
+body {
+    background-color: $pimaryColor;
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+}
+
+header,
+footer {
+    background-color: $secondaryColor;
+    padding: $xxxSmall;
+    height: 4.8rem;
+
+    .header,
+    .footer {
+        width: 100%;
+        height: 100%;
+        max-width: $max-width;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+
+        a img {
+            height: 3.2rem;
+        }
+    }
+
+    .footer {
+        a:nth-last-child(1) img {
+            height: 1.5rem;
+        }
+    }
+
+    @media screen and (min-width: 85rem) {
+        height: $xxxLarge;
+
+        .header,
+        .footer {
+            a img {
+                height: 4rem;
+            }
+        }
+    }
+}
+
+//Main section containing movies with navigation
+main {
+    width: 100%;
+    max-width: $max-width;
+    margin: auto;
+    flex-grow: 1;
+
+    nav {
+        max-width: 100%;
+        overflow-x: scroll;
+        display: flex;
+        scrollbar-width: thin;
+        scrollbar-color: $borderColor $secondaryColor;
+
+        .nav_cont {
+            display: flex;
+            gap: 0 $xSmall;
+            margin: 0 $xxxSmall;
+            padding: $xSmall 0;
+        }
+    }
+
+    @media screen and (min-width: 85rem) {
+        nav {
+            margin: 0;
+        }
+    }
+
+    //Output part of main
+    .output {
+        color: $fontColor;
+        padding: 0 $xxxSmall;
+        margin: $xSmall 0;
+
+        h1 {
+            font-size: $mobileTitel;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: $xSmall;
+        }
+
+        #titel {
+            text-transform: none;
+        }
+
+        //Movies on the start page
+        .section {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+
+            .cards {
+                display: flex;
+                overflow-x: scroll;
+                gap: $small;
+                scrollbar-width: thin;
+                scrollbar-color: $borderColor $secondaryColor;
+            }
+
+            &:nth-child(2) {
+                margin: $medium 0;
+            }
+        }
+
+        article {
+            min-width: 15.8rem;
+            max-width: 100%;
+            border-radius: 0.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                border-radius: 0.5rem;
+                box-shadow: 2px 2px 8px rgba(211, 211, 213, 0.25);
+            }
+
+            .fas {
+                color: $infoColor;
+                background-color: $fontColor;
+                width: $xSmall;
+                height: $xSmall;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+                box-shadow: 2px 2px 4p x rgba(211, 211, 213, 0.25);
+                font-size: $avarageFont;
+                position: absolute;
+                top: 0.4rem;
+                right: 0.4rem;
+                cursor: pointer;
+
+                .circle {
+                    width: 2.4rem;
+                    height: 2.4rem;
+                    border-radius: 50%;
+                    background-color: #d3d3d5;
+                    position: absolute;
+                    transform: scale(0);
+                    animation: scale2 500ms ease-out;
+                    z-index: 20;
+                    top: 0;
+                    right: 0;
+                }
+
+                @keyframes scale2 {
+                    to {
+                        transform: scale(30);
+                        opacity: 0;
+                    }
+                }
+            }
+
+            h2 {
+                font-size: $mobileBread;
+                font-weight: 600;
+                letter-spacing: 0.03em;
+                line-height: $xSmall;
+                padding-bottom: $xxSmall;
+            }
+        }
+
+        @media screen and (min-width: 85rem) {
+            padding: 0;
+
+            .section {
+                &:nth-child(2) {
+                    margin: $xxLarge 0;
+                }
+            }
+
+            h1 {
+                font-size: $deskTitel;
+            }
+
+            article {
+                h2 {
+                    font-size: $deskBread;
+                }
+            }
+        }
+
+        //Movies att the search and genres page
+        .moviecards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: $xSmall;
+            justify-items: center;
+
+            .load {
+                background-color: $secondaryColor;
+                border: 0.5px solid $borderColor;
+                border-radius: 0.5rem;
+                color: $fontColor;
+                font-size: $deskBread;
+                text-transform: uppercase;
+                min-height: 25rem;
+                max-height: 65%;
+                min-width: 15.8rem;
+                width: 100%;
+                cursor: pointer;
+                transition: background-color 150ms ease-in;
+                align-items: center;
+                justify-content: center;
+                order: 3;
+                position: relative;
+                overflow: hidden;
+
+                &:hover {
+                    background-color: $pimaryColor;
+                }
+
+                &:active {
+                    background-color: #1c1c1e;
+                }
+
+                &:disabled {
+                    background-color: $pimaryColor;
+                    color: $secondaryColor;
+                    cursor: not-allowed;
+                }
+
+                .circle {
+                    position: absolute;
+                    background-color: #fff;
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%) scale(0);
+                    animation: scale 0.5s ease-out;
+                }
+
+                @keyframes scale {
+                    to {
+                        transform: translate(-50%, -50%) scale(5);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+
+        @media screen and (min-width: 85rem) {
+            margin: $xxxLarge 0;
+
+            h1 {
+                font-size: $deskTitel;
+            }
+
+            h2 {
+                font-size: $deskBread;
+            }
+        }
+    }
+}
+
+//Search btn
+.search {
+    height: 3.2rem;
+    display: flex;
+    border-radius: 0.5rem;
+    position: relative;
+
+    .input {
+        background-color: $pimaryColor;
+        border: 0;
+        padding: $xxxSmall;
+        border-radius: 0.5rem;
+        font-weight: 400;
+        font-size: $mobileSearch;
+        letter-spacing: 0.06em;
+        color: $fontColor;
+        width: 3.2rem;
+        height: 3.2rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: width 0.3s ease;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            opacity: 1;
+        }
+    }
+
+    .btn {
+        font-size: 2.4rem;
+        color: $borderColor;
+        background-color: $secondaryColor;
+        border: 0.05rem solid $borderColor;
+        border-radius: 0.5rem;
+        width: 3.2rem;
+        height: 3.2rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        &:active {
+            background-color: #1c1c1e;
+        }
+    }
+
+    &.active {
+        .input {
+            width: calc(30rem - 1.6rem);
+        }
+
+        .btn {
+            background-color: $pimaryColor;
+            border: 0;
+        }
+    }
+
+    @media screen and (min-width: 85rem) {
+        height: 4rem;
+
+        #input {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .btn {
+            height: 4rem;
+            width: 4rem;
+            cursor: pointer;
+            transition: background-color 150ms ease-in;
+
+            &:hover {
+                background-color: $pimaryColor;
+            }
+        }
+
+        &.active {
+            #input {
+                width: 40rem;
+            }
+        }
+    }
+}

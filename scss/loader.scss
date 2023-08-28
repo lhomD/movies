@@ -1,0 +1,54 @@
+.wrapper {
+    position: relative;
+}
+
+.loader_container {
+    background-color: #3b3a3d;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: opacity 500ms;
+    z-index: 10;
+
+    .loader {
+        position: relative;
+        width: 10rem;
+        height: 10rem;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            border: 5rem solid transparent;
+            border-bottom-color: #535256;
+            transform: rotate(-90deg);
+            animation: rotate4 2s linear infinite;
+        }
+
+        &::after {
+            animation-delay: 0.5s;
+            border-bottom-color: #bab8bc;
+        }
+
+        @keyframes rotate4 {
+            0%,
+            25% {
+                transform: rotate(-90deg);
+            }
+
+            25%,
+            75% {
+                transform: rotate(-270deg);
+            }
+
+            100% {
+                transform: rotate(-450deg);
+            }
+        }
+    }
+}

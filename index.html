@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Find ratings, information and trailer of the movies. Uses The Movie DB API to find the movies">
+    <meta name="author" content="Ilhom Dadadjanov">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+        integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+        crossorigin="anonymous" />
+    <link rel="icon" type="image/x-icon" href="img/logo_FavIcon.png">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <script src="script/script.js"></script>
+    <title>MOVIES</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="loader_container">
+            <div class="loader"></div>
+        </div>
+        <div class="modal" id="modal">
+            <div class="modal_inner">
+                <i class="fas fa-times" id="close"></i>
+                <img src="img/no_img.jpg" alt="poster">
+                <h2>Titel</h2>
+                <p>Description</p>
+                <div class="modal_inner_info" id="modal_inner_info">
+                    <article id="score">
+                        <h3>user score:</h3>
+                        <div class="avarage_container">
+                            <div class="avarege green">
+                                <div class="avarege-half"></div>
+                                <div class="avarege-half"></div>
+                                <div class="avarege-top"></div>
+                                <span class="avarege-value"></span>
+                            </div>
+                        </div>
+                    </article>
+                    <article id="time">
+                        <h3>play time: </h3>
+                        <span></span>
+                    </article>
+                    <article id="release">
+                        <h3>release:</h3>
+                        <span></span>
+                    </article>
+                    <article id="genre">
+                        <h3>genre:</h3>
+                        <span></span>
+                    </article>
+                    <article id="budjet">
+                        <h3>budjet:</h3>
+                        <span></span>
+                    </article>
+                    <article id="country">
+                        <h3>country:</h3>
+                        <span></span>
+                    </article>
+                </div>
+
+                <div class="modal_inner_actors"></div>
+
+                <div class="modal_inner_trailer"></div>
+
+            </div>
+        </div>
+
+        <header>
+            <!--Header section added a div with class to controll width-->
+            <div class="header">
+                <a href="index.html">
+                    <img src="img/logo-01.png" alt="Logo Movies">
+                </a>
+                <form id="search" class="search">
+                    <input type="text" id="input" class="input" placeholder="Search...">
+                    <button class="btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </header>
+
+        <main>
+            <!--Nav buttons for genres-->
+            <nav>
+                <div class="nav_cont">
+                    <button class="gener" id="28" value="action">action</button>
+                    <button class="gener" id="12" value="adventure">adventure</button>
+                    <button class="gener" id="16" value="animation">animation</button>
+                    <button class="gener" id="35" value="comedy">comedy</button>
+                    <button class="gener" id="80" value="crime">crime</button>
+                    <button class="gener" id="99" value="action">documentary</button>
+                    <button class="gener" id="18" value="drama">drama</button>
+                    <button class="gener" id="10751" value="family">family</button>
+                    <button class="gener" id="14" value="fantasy">fantasy</button>
+                    <button class="gener" id="36" value="history">history</button>
+                    <button class="gener" id="27" value="horror">horror</button>
+                    <button class="gener" id="10402" value="music">music</button>
+                    <button class="gener" id="10749" value="romance">romance</button>
+                    <button class="gener" id="878" value="science fiction">science fiction</button>
+                    <button class="gener" id="53" value="thriller">thriller</button>
+                    <button class="gener" id="10752" value="war">war</button>
+                    <button class="gener" id="37" value="western">western</button>
+                </div>
+            </nav>
+            <div class="output" id="output"></div>
+        </main>
+        <!--Footer section added a div with class to controll width-->
+        <footer>
+            <div class="footer">
+                <a href="index.html">
+                    <img src="img/logo-01.png" alt="Logo Movies">
+                </a>
+                <a href="http://themoviedb.org/" target="_blank" rel="noopener noreferrer"><img src="img/blue_short.svg"
+                        alt="Logo The Movie DB">
+                </a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

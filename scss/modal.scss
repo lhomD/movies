@@ -1,0 +1,367 @@
+@import "config";
+
+//Modal screen
+.modal {
+    position: fixed;
+    z-index: 100;
+    background-color: hsla(0, 0%, 0%, 0.75);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    display: none;
+    transition: scale ease-in 200ms;
+
+    .modal_inner {
+        max-width: 126rem;
+        margin: $xxSmall;
+        background-size: 100% 34rem;
+        background-repeat: no-repeat;
+        background-position: top left;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(150, 150, 150, 0.6);
+        height: calc(100% - 10rem);
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        scrollbar-color: $borderColor $secondaryColor;
+        position: relative;
+        color: $fontColor;
+
+        h2 {
+            font-size: $mobileTitel;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+            line-height: $small;
+            text-align: center;
+            padding: $small 0;
+        }
+
+        h3 {
+            font-size: $mobileBread;
+            font-weight: 600;
+            text-transform: capitalize;
+            padding: 0 $xxSmall;
+        }
+
+        p {
+            font-weight: 400;
+            font-size: $mobileBread;
+            line-height: $xSmall;
+            letter-spacing: 0.05em;
+            padding: 0 $xxSmall;
+            padding-bottom: $xLarge;
+        }
+
+
+        span {
+            font-size: $mobileBread;
+            padding: 0 $xxSmall;
+        }
+
+        .modal_inner_info,
+        .modal_inner_actors,
+        .modal_inner_trailer,
+        p,
+        h2 {
+            background-color: #080708;
+        }
+
+        .fas {
+            color: $infoColor;
+            background-color: $fontColor;
+            width: $xSmall;
+            height: $xSmall;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+            box-shadow: 2px 2px 4px rgba(211, 211, 213, 0.25);
+            font-size: $avarageFont;
+            position: sticky;
+            z-index: 10;
+            float: right;
+            top: 1.6rem;
+            right: 1.6rem;
+            cursor: pointer;
+        }
+
+        &>img {
+            width: 12.4rem;
+            margin: $xxxLarge $xxSmall;
+        }
+
+        .modal_inner_info {
+
+            article {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: $xSmall;
+            }
+        }
+
+        .modal_inner_actors {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            justify-content: space-around;
+            gap: $xSmall;
+
+            h2 {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                padding-top: $xLarge;
+            }
+
+            article {
+                width: 10rem;
+                text-align: center;
+                margin: 0 $xxSmall;
+
+                img {
+                    width: 100%;
+                    //height: 10rem;
+                    border-radius: 100%;
+                }
+            }
+        }
+
+        .modal_inner_trailer {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 $xxSmall $medium;
+            gap: $xSmall;
+
+            h2 {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                padding-top: $xLarge;
+            }
+
+            iframe {
+                height: 25rem;
+                width: 100%;
+                max-width: 35rem;
+                border: 0;
+            }
+        }
+
+        @media screen and (min-width: 64rem) {
+            background-size: 100% 50%;
+            background-repeat: no-repeat;
+            background-position: top left;
+
+            &>img {
+                width: 30rem;
+            }
+
+            h2 {
+                padding: $medium;
+            }
+        }
+
+        @media screen and (min-width: 80rem) {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(7, min-content);
+
+            .fas {
+                grid-column: 3/4;
+                grid-row: 1/2;
+                justify-self: end;
+                margin: $xxSmall;
+            }
+
+            h2 {
+                grid-column: 1/4;
+                grid-row: 2/3;
+                justify-self: center;
+                margin: $small 0 $xxxLarge;
+                font-size: $deskTitel;
+            }
+
+            p {
+                margin-right: $medium;
+            }
+
+            p,
+            h3,
+            span {
+                grid-column: 2/4;
+                grid-row: 3/4;
+                padding: 0;
+                align-self: end;
+                font-size: $deskBread;
+            }
+
+            .modal_inner_info {
+                grid-column: 2/4;
+                grid-row: 4/5;
+                justify-self: center;
+                align-self: end;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                row-gap: 2.4rem;
+                justify-self: start;
+                width: 100%;
+
+                article {
+                    justify-content: flex-start;
+                    padding-bottom: 0;
+                    align-items: center;
+                }
+            }
+
+            .modal_inner_actors {
+                grid-column: 1/4;
+                grid-row: 6/7;
+                margin: $xxxLarge $medium 0;
+            }
+
+            .modal_inner_trailer {
+                grid-column: 1/4;
+                grid-row: 7/8;
+
+                iframe {
+                    margin-bottom: $xxxLarge;
+                }
+            }
+
+
+            &>img {
+                width: 29rem;
+                grid-column: 1/1;
+                grid-row: 3/5;
+                margin: 0 $medium;
+            }
+
+            .modal_inner_info,
+            .modal_inner_actors,
+            .modal_inner_trailer,
+            p,
+            h2 {
+                background-color: transparent;
+                padding: 0;
+            }
+        }
+    }
+
+    &.show {
+        display: flex;
+        transform: scale(1);
+    }
+}
+
+//Avarage diagram
+.output,
+.modal {
+    .avarege {
+        width: $medium;
+        height: $medium;
+        background-color: $fontColor;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: absolute;
+        top: -2rem;
+        right: 50%;
+        transform: translate(50%, 0);
+
+        .avarege-half,
+        .avarege-top {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: right center;
+        }
+
+        .avarege-top {
+            background-color: $fontColor;
+            transition: opacity 1000ms 500ms ease;
+            opacity: 1;
+        }
+
+        .avarege-value {
+            font-weight: 600;
+            font-size: $avarageFont;
+            z-index: 10;
+            width: $small;
+            height: $small;
+            border-radius: 50%;
+            background-color: $fontColor;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $infoColor;
+            align-self: center;
+        }
+
+        &.green .avarege-half:nth-child(1) {
+            background-color: #005200;
+        }
+
+        &.green .avarege-half:nth-child(2) {
+            background-color: #005200;
+        }
+
+        &.green .avarege-value {
+            color: #005200;
+        }
+
+        &.orange .avarege-half:nth-child(1) {
+            background-color: #d68f0a;
+        }
+
+        &.orange .avarege-half:nth-child(2) {
+            background-color: #d68f0a;
+        }
+
+        &.orange .avarege-value {
+            color: #d68f0a;
+        }
+
+        &.red .avarege-half:nth-child(1) {
+            background-color: #b30000;
+        }
+
+        &.red .avarege-half:nth-child(2) {
+            background-color: #b30000;
+        }
+
+        &.red .avarege-value {
+            color: #b30000;
+        }
+    }
+
+    .section,
+    .moviecards {
+        .avarage_container {
+            position: relative;
+            width: 100%;
+            height: $small;
+        }
+    }
+
+    .modal_inner {
+        .avarage_container {
+            position: relative;
+            width: 4rem;
+            margin: 0 $xxSmall;
+        }
+    }
+}
